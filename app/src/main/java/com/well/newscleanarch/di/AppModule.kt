@@ -51,19 +51,6 @@ object AppModule {
             saveAppEntry = SaveAppEntry(localUserManager)
         )
 
-/*
-
-    @Provides
-    @Singleton
-    fun provideNewsApi(): NewsDataSource {
-        return Retrofit.Builder()
-            .baseUrl(ApiUrlConstant.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(NewsDataSource::class.java)
-    }
-*/
-
     @Singleton
     @Provides
     @Named(Constants.RETROFIT_DEFAULT)

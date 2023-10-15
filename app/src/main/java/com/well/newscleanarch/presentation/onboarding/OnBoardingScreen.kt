@@ -30,9 +30,7 @@ fun OnBoardingScreen(
             modifier = Modifier.fillMaxWidth(),
             data = items,
             pagerState = pagerState,
-            event = {
-                event(OnBoardingEvent.SaveAppEntry)
-            }
+            event = event
         )
     }
 }

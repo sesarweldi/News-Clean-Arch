@@ -19,4 +19,8 @@ object StringConstant {
     const val ARTICLE_DELETED = "Article Deleted"
     const val ARTICLE_SAVED = "Article Saved"
 
+    // OnBoarding Screen
+    const val SKIP_NOW = "Skip Now"
+    const val GET_STARTED = "Get Started"
+
 }

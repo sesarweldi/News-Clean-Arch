@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -25,10 +24,12 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.well.newscleanarch.R
 import com.well.newscleanarch.presentation.onboarding.OnBoarding
+import com.well.newscleanarch.presentation.onboarding.OnBoardingEvent
 import com.well.newscleanarch.ui.theme.BottomCardShape
 import com.well.newscleanarch.ui.theme.Poppins
 import com.well.newscleanarch.ui.theme.PoppinsSemiBold
 import com.well.newscleanarch.ui.theme.TextCaption
+import com.well.newscleanarch.util.StringConstant
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
@@ -37,7 +38,7 @@ fun OnBoardingPager(
     modifier: Modifier = Modifier,
     data: List<OnBoarding>,
     pagerState: PagerState,
-    event: () -> Unit
+    event: (OnBoardingEvent) -> Unit
 ) {
     Box(modifier = modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -49,7 +50,7 @@ fun OnBoardingPager(
                 ) {
                     Image(
                         painter = painterResource(id = data[page].image),
-                        contentDescription = "",
+                        contentDescription = null,
                         modifier = Modifier.fillMaxWidth(),
                     )
                 }
@@ -112,9 +113,15 @@ fun OnBoardingPager(
 
                             if (pagerState.currentPage == 2) {
                                 Button(
-                                    onClick = event, colors = ButtonDefaults.buttonColors(
+                                    onClick = {
+                                        scope.launch {
+                                            event(OnBoardingEvent.SaveAppEntry)
+                                        }
+                                    },
+                                    colors = ButtonDefaults.buttonColors(
                                         backgroundColor = data[pagerState.currentPage].backgroundColor
-                                    ), contentPadding = PaddingValues(vertical = 12.dp),
+                                    ),
+                                    contentPadding = PaddingValues(vertical = 12.dp),
                                     elevation = ButtonDefaults.elevation(
                                         defaultElevation = 0.dp
                                     ),
@@ -122,16 +129,20 @@ fun OnBoardingPager(
                                     shape = RoundedCornerShape(20)
                                 ) {
                                     Text(
-                                        text = "Get Started", color = Color.White,
+                                        text = StringConstant.GET_STARTED, color = Color.White,
                                         fontSize = 14.sp,
                                         fontFamily = Poppins,
                                         fontWeight = FontWeight.SemiBold
                                     )
                                 }
                             } else {
-                                TextButton(onClick = {}) {
+                                TextButton(onClick = {
+                                    scope.launch {
+                                        pagerState.animateScrollToPage(page = 2)
+                                    }
+                                }) {
                                     Text(
-                                        text = "Skip Now",
+                                        text = StringConstant.SKIP_NOW,
                                         color = Color(0xFF292D32),
                                         fontFamily = Poppins,
                                         textAlign = TextAlign.Right,

@@ -18,19 +18,19 @@ data class OnBoarding(
 val onBoardingData = listOf(
     OnBoarding(
         title = "Lorem Ipsum",
-        desc = "Lorem Ipsum Sit Amet dolo asu tenan jingan bangsat",
+        desc = "Lorem Ipsum Sit Amet dolor 1",
         image = R.drawable.airterjun_lekeleke,
         backgroundColor = PrimaryColor,
     ),
     OnBoarding(
         title = "Lorem Ipsum",
-        desc = "Lorem Ipsum Sit Amet dolo asu tenan jingan bangsat",
+        desc = "Lorem Ipsum Sit Amet dolor 2",
         image = R.drawable.desa_pinggiran,
         backgroundColor = GreenColor,
     ),
     OnBoarding(
         title = "Lorem Ipsum",
-        desc = "Lorem Ipsum Sit Amet dolo asu tenan jingan bangsat",
+        desc = "Lorem Ipsum Sit Amet dolor 2",
         image = R.drawable.desa_pinggiran2,
         backgroundColor = RedColor,
     )

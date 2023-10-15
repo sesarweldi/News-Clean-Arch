@@ -10,10 +10,10 @@ import javax.inject.Inject
 @HiltViewModel
 class OnBoardingViewModel @Inject constructor(
     private val appEntryUseCases: AppEntryUseCases
-)  : ViewModel() {
+) : ViewModel() {
 
     fun onEvent(event: OnBoardingEvent) {
-        when(event) {
+        when (event) {
             is OnBoardingEvent.SaveAppEntry -> {
                 saveAppEntry()
             }
@@ -22,7 +22,7 @@ class OnBoardingViewModel @Inject constructor(
 
     private fun saveAppEntry() {
         viewModelScope.launch {
-            appEntryUseCases.saveAppEntry
+            appEntryUseCases.saveAppEntry()
         }
     }
 }
