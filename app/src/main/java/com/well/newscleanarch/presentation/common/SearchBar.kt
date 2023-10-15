@@ -1,6 +1,5 @@
 package com.well.newscleanarch.presentation.common
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
@@ -9,12 +8,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -45,13 +48,15 @@ fun SearchBar(
         }
     }
 
+    val focusRequester = remember { FocusRequester() }
+
     Box(modifier = modifier) {
         TextField(
             value = text, onValueChange = onValueChanged,
             readOnly = readOnly,
             modifier = Modifier
                 .fillMaxWidth()
-                .searchBarBorder(),
+                .focusRequester(focusRequester),
             leadingIcon = {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_search),
@@ -62,10 +67,10 @@ fun SearchBar(
             placeholder = {
                 Text(text = StringConstant.SEARCH, style = TextCaption, color = PlaceHolderColor)
             },
-            shape = MaterialTheme.shapes.medium,
+            shape = RoundedCornerShape(24.dp),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.Black,
-                backgroundColor = BackgroundColor,
+                backgroundColor = Neutral400.copy(alpha = 0.2f),
                 cursorColor = Color.Black,
                 disabledIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
@@ -78,15 +83,11 @@ fun SearchBar(
             textStyle = TextCaption,
             interactionSource = interactionSource,
         )
-    }
-}
 
-fun Modifier.searchBarBorder() = composed {
-    border(
-        width = 1.dp,
-        color = Color.Black,
-        shape = RoundedCornerShape(8.dp),
-    )
+        LaunchedEffect(Unit) {
+            focusRequester.requestFocus()
+        }
+    }
 }
 
 @Preview(showBackground = true)

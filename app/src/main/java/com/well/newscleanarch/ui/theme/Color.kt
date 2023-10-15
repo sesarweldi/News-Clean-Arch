@@ -16,3 +16,6 @@ val RedColor = Color(0xffEB70A5)
 val ShimmerColor = Color(0xffC3C3C3)
 val PlaceHolderColor = Color(0xffA0A3BD)
 val TextFieldBackgroundColor = Color(0xFFFFF0FF)
+
+val Neutral300 = Color(0xFFF9FAFB)
+val Neutral400 = Color(0xFFCBD5E1)

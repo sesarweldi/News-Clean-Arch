@@ -30,7 +30,8 @@ class MainActivity : ComponentActivity() {
                 val systemUiColor = rememberSystemUiController()
                 SideEffect {
                     systemUiColor.setStatusBarColor(
-                        color = Color.Transparent
+                        color = Color.Transparent,
+                        darkIcons = true,
                     )
                 }
                 Box(
