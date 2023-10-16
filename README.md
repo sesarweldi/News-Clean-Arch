@@ -5,7 +5,7 @@ My first mini-project which to implement Jetpack Compose. I used public API and 
 # Technology
 - Clean Architecture
 - Jetpack Compose
-- Single Activity and using NavGraph for manage any activities
+- Single Activity and using Jetpack Navigation Component for manage any activities
 - Dagger Hilt
 - MVVM (Model View ViewModel) Architecture
 - Retrofit
