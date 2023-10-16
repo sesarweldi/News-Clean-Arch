@@ -1,6 +1,6 @@
 # News-Clean-Arch
 About
-A Mini Project using public API uses latest technologies such as Clean Architecture, Jetpack Compose, Nav Graph, Dagger Hilt, Room, etc.
+My first mini-project which to implement Jetpack Compose. I used public API and the latest technologies of android development such as Clean Architecture, Jetpack Compose, Nav Graph, Dagger Hilt, Room, etc.
 
 # Technology
 - Clean Architecture
